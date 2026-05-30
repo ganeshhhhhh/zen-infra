@@ -112,13 +112,14 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: |
-          terraform plan \
-            -var="aws_region=${{ env.AWS_REGION }}" \
-            -var="db_password=${{ env.TF_DB_PASSWORD }}" \
-            -var="jwt_secret=${{ env.TF_JWT_SECRET }}" \
-            -var="github_org=${{ vars.GH_ORG }}" \
-            -out=tfplan \
-            -no-color
+         terraform plan \
+         -lock=false \
+         -var="aws_region=${{ env.AWS_REGION }}" \
+         -var="db_password=${{ env.TF_DB_PASSWORD }}" \
+         -var="jwt_secret=${{ env.TF_JWT_SECRET }}" \
+         -var="github_org=${{ vars.GH_ORG }}" \
+         -out=tfplan \
+         -no-color
         continue-on-error: true
 
       - name: Check plan status
