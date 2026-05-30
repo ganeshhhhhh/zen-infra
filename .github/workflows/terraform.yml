@@ -250,6 +250,7 @@ jobs:
             -var="jwt_secret=${{ env.TF_JWT_SECRET }}" \
             -var="github_org=${{ vars.GH_ORG }}" \
             -auto-approve \
+            -lock=false \
             -no-color
 
       - name: Release state lock on failure
